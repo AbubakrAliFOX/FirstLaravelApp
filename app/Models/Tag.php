@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Job;
 
-class Empolyer extends Model
+class Tag extends Model
 {
     use HasFactory;
 
     public function jobs()
     {
-        return $this->hasMany(Job::class);
+        return $this->belongsToMany(Job::class, relatedPivotKey: 'jobs_listings_id');
     }
 }

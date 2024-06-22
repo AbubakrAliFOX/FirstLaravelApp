@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Order;
 
-class Empolyer extends Model
+class Product extends Model
 {
     use HasFactory;
 
-    public function jobs()
+    public function orders()
     {
-        return $this->hasMany(Job::class);
+        return $this->belongsToMany(Order::class, "order_items");
     }
 }
