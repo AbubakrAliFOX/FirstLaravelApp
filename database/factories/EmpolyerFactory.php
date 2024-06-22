@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Empolyer;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Job>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Empolyer>
  */
-class JobFactory extends Factory
+class EmpolyerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +17,7 @@ class JobFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->jobTitle(),
-            'empolyer_id' => Empolyer::factory(),
-            'salary' => '$50,000'
+            'name' => fake()->company(),
         ];
     }
 }

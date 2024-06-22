@@ -10,10 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('empolyers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('jobs_listings', function (Blueprint $table) {
+            $table->foreignIdFor(App\Models\Empolyer::class);
         });
     }
 
@@ -22,6 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('empolyers');
+        Schema::table('jobs_listings', function (Blueprint $table) {
+            $table->dropForeignIdFor(App\Models\Empolyer::class);
+        });
     }
 };
