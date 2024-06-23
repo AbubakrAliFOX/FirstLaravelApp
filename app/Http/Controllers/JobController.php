@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\JobPosted;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Gate;
+use Mail;
 
 
 class JobController extends Controller
@@ -34,7 +36,7 @@ class JobController extends Controller
 
         ]);
 
-        Job::create([
+        $job = Job::create([
             'title' => request('title'),
             'salary' => request('salary'),
             'created_at',
@@ -43,7 +45,9 @@ class JobController extends Controller
             Carbon::now(),
             'empolyer_id' => 1
         ]);
-
+        Mail::to($job->empolyer->user->email)->send(
+            new JobPosted($job)
+        );
         return redirect('/jobs');
     }
 
