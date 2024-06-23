@@ -4,5 +4,7 @@
     </x-slot:heading>
     <h1><strong>{{$job->title}}</strong></h1>
     <h3>{{$job->title}}s get paid around {{$job->salary}} per year!</h3>
-    <x-button href="/jobs/{{$job->id}}/edit" class="mt-2">Edit</x-button>
+    @can('edit-job', $job)
+        <x-button href="/jobs/{{$job->id}}/edit" class="mt-2">Edit</x-button>
+    @endcan
 </x-layout>
