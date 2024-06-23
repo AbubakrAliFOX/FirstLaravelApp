@@ -45,7 +45,7 @@ class JobController extends Controller
             Carbon::now(),
             'empolyer_id' => 1
         ]);
-        Mail::to($job->empolyer->user->email)->send(
+        Mail::to($job->empolyer->user->email)->queue(
             new JobPosted($job)
         );
         return redirect('/jobs');
