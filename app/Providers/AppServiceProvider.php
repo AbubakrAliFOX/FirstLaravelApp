@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         //Paginator::useBootstrapFive();
-        Gate::define('edit-job', function (User $user, Job $job) {
-            return $job->empolyer->user->is($user);
-        });
+        // Gate::define('edit-job', function (User $user, Job $job) {
+        //     return $job->empolyer->user->is($user);
+        // });
     }
 }
